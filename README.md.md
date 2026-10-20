@@ -7,19 +7,23 @@
 
 Este proyecto consiste en una plataforma interactiva y analítica desarrollada en **Python** y **Streamlit** para la **evaluación, visualización y análisis cuantitativo de amenazas de Prompt Injection** (Inyección de Prompts) en Modelos de Lenguaje de Gran Escala (LLMs).
 
-La herramienta consolida múltiples benchmarks del estado del arte en ciberseguridad para IA, ofreciendo una interfaz gráfica ágil que permite examinar tácticas adversarias, niveles de vulnerabilidad y métricas de seguridad tanto en idioma inglés como en español.
+La herramienta consolida data sets en ciberseguridad para IA, ofreciendo una interfaz gráfica ágil que permite examinar tácticas adversarias, niveles de vulnerabilidad y métricas de seguridad para futura toma de desiciones
 
 ---
 
-## 📊 DATASETS Y BENCHMARKS INTEGRADOS
+## 📊 Datasets Utilizados
 
-El dashboard procesa datos estructurados y optimizados en formato **`.parquet`**, integrando las siguientes fuentes fundamentales:
+El dashboard procesa e integra datos optimizados en formato `.parquet` provenientes de tres fuentes clave de ciberseguridad para IA:
 
-* 🟢 **OWASP Top 10 for LLM Applications:** Evaluación de los riesgos de seguridad más críticos en sistemas basados en IA generativa.
-* 🔴 **MITRE ATT&CK / ATLAS:** Mapeo de tácticas, técnicas y procedimientos (TTPs) utilizados por adversarios contra modelos y plataformas de IA.
-* 🌐 **Horizon Prompt Injection Eval Suite:** Corpus exhaustivo enfocado en la evaluación de inyecciones de prompt en idioma **español**.
-* 🧪 **NeurAlchemy / Benchmarks Complementarios:** Pruebas avanzadas de robustez y resistencia ante ataques directos e indirectos.
+1. **neuralchemy / Prompt-injection-dataset**
+   * Dataset de Hugging Face especializado en clasificar ataques y comportamiento benigno.
+   * Contiene categorías como `benign`, `direct_injection`, `indirect_injection`, `crescendo`, `jailbreak` y `encoding_obfuscation`.
 
+2. **Horizon Prompt Injection Eval Suite**
+   * Corpus exhaustivo enfocado en la evaluación e inyección de prompts en idioma español.
+
+3. **Benchmark Dataset**
+   * Dataset complementario de pruebas comparativas para el análisis cuantitativo de vulnerabilidades y desempeño de modelos.
 ---
 
 ## 📁 ESTRUCTURA DE LA ARQUITECTURA
