@@ -49,6 +49,7 @@ TP_ciberseguridad_IA_streamlit/
 
 * **Lenguaje Principal:** `Python 3.10+`
 * **Framework Web / Dashboard:** `Streamlit`
+* **Diseño y Estilos:** CSS3 / HTML5 (estilos personalizados mediante `st.markdown` y reglas `!important` para la personalización avanzada de la interfaz) 
 * **Procesamiento de Datos:** `Pandas`, `PyArrow`, `FastParquet`
 * **Visualización Gráfica:** `Plotly Express`, `Plotly Graph Objects`
 * **Control de Versiones:** `Git` & `GitHub`
