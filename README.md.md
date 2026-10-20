@@ -101,6 +101,8 @@ La aplicación se abrirá automáticamente en tu navegador web predeterminado en
 
 Proyecto desarrollado para la evaluación y estudio de la **Ciberseguridad aplicada a la Inteligencia Artificial Generativa**.
 
+**INEGRANTES:** `Danilo Figueroa,` `Silvana Alejandra Gerez, ` ` Maria Alejandra Bernarconi Lahn `
+
 * **Repositorio oficial:** [GitHub - Tilchus/TP_ciberseguridad_IA_streamlit](https://github.com/Tilchus/TP_ciberseguridad_IA_streamlit)
 
 ---
