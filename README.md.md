@@ -20,7 +20,7 @@ El dashboard procesa e integra datos optimizados en formato `.parquet` provenien
    * Contiene categorías como `benign`, `direct_injection`, `indirect_injection`, `crescendo`, `jailbreak` y `encoding_obfuscation`.
 
 2. **Horizon Prompt Injection Eval Suite**
-   * Corpus exhaustivo enfocado en la evaluación e inyección de prompts en idioma español.
+   * Corpus exhaustivo enfocado en la evaluación e inyección de prompt por idioma.
 
 3. **Benchmark Dataset**
    * Dataset complementario de pruebas comparativas para el análisis cuantitativo de vulnerabilidades y desempeño de modelos.
