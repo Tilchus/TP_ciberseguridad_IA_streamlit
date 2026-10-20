@@ -1,13 +1,13 @@
-# 🛡️ EVALUACIÓN Y ANÁLISIS DE PROMPT INJECTION EN LLMs
-### *Dashboard Interactivo de Ciberseguridad e Inteligencia Artificial*
+# 🛡️Dashboard Interactivo de Ciberseguridad en Modelos de IA
+### *Prompt Injection*
 
 ---
 
 ## 📌 DESCRIPCIÓN DEL PROYECTO
 
-Este proyecto consiste en una plataforma interactiva y analítica desarrollada en **Python** y **Streamlit** para la **evaluación, visualización y análisis cuantitativo de amenazas de Prompt Injection** (Inyección de Prompts) en Modelos de Lenguaje de Gran Escala (LLMs).
+Este proyecto consiste en una plataforma interactiva y analítica desarrollada en **Python** y **Streamlit**. Actúa como un centro de control analítico que permite explorar miles de registros, evaluar la severidad de las amenazas y comprender cómo reaccionan los modelos ante diferentes vectores de ataque
 
-La herramienta consolida data sets en ciberseguridad para IA, ofreciendo una interfaz gráfica ágil que permite examinar tácticas adversarias, niveles de vulnerabilidad y métricas de seguridad para futura toma de desiciones
+La herramienta consolida data sets en ciberseguridad para IA, ofreciendo una interfaz gráfica ágil que permite examinar tácticas adversarias, niveles de vulnerabilidad y métricas de seguridad para futura toma de desiciones.
 
 ---
 
