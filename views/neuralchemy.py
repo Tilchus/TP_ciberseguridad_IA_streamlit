@@ -1,5 +1,7 @@
 import math
+import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 import streamlit as st
 from utils.loader import cargar_datos_neuralchemy
 from utils.ui import SEVERITY_COLOR_MAP, apply_global_theme, style_plotly_chart
@@ -72,23 +74,84 @@ col1, col2 = st.columns(2)
 
 with col1:
     with st.container(border=True):
-        st.subheader("📊 Distribución Global de Severidad")
+        st.subheader("📊 Diagrama de Pareto: Severidad de Riesgo")
         if not df_sev.empty:
             cols = df_sev.columns.tolist()
-            fig_sev = px.bar(
-                df_sev,
-                x=cols[0],
-                y=cols[1],
-                color=cols[0],
-                color_discrete_map=SEVERITY_COLOR_MAP,
-                labels={cols[0]: "Nivel de Severidad", cols[1]: "Cantidad de Casos"},
+            
+            # Copia local y ordenamiento descendente por cantidad de casos para Pareto
+            df_pareto = df_sev.copy()
+            df_pareto[cols[1]] = pd.to_numeric(df_pareto[cols[1]], errors='coerce').fillna(0)
+            df_pareto = df_pareto.sort_values(by=cols[1], ascending=False).reset_index(drop=True)
+            
+            # Cálculo del porcentaje acumulado
+            total_casos = df_pareto[cols[1]].sum()
+            df_pareto["acumulado"] = (df_pareto[cols[1]].cumsum() / total_casos) * 100 if total_casos > 0 else 0
+            
+            # Mapeo de colores por barra
+            bar_colors = [SEVERITY_COLOR_MAP.get(sev, "#00E5FF") for sev in df_pareto[cols[0]]]
+
+            # Construcción del gráfico combinado (Barras + Línea con doble eje Y)
+            fig_pareto = go.Figure()
+
+            # Barras de frecuencia
+            fig_pareto.add_trace(
+                go.Bar(
+                    x=df_pareto[cols[0]],
+                    y=df_pareto[cols[1]],
+                    name="Cantidad de Casos",
+                    marker=dict(color=bar_colors),
+                    text=df_pareto[cols[1]],
+                    textposition="auto",
+                    hovertemplate="%{x}: %{y} casos<extra></extra>",
+                )
             )
-            fig_sev = style_plotly_chart(fig_sev)
-            st.plotly_chart(fig_sev, use_container_width=True)
+
+            # Línea de porcentaje acumulado (Eje Y2)
+            fig_pareto.add_trace(
+                go.Scatter(
+                    x=df_pareto[cols[0]],
+                    y=df_pareto["acumulado"],
+                    name="% Acumulado",
+                    mode="lines+markers",
+                    line=dict(color="#00E5FF", width=3),
+                    marker=dict(size=8, color="#00E5FF"),
+                    yaxis="y2",
+                    hovertemplate="%{x}: %{y:.1f}% acumulado<extra></extra>",
+                )
+            )
+
+            # Estilizado base
+            fig_pareto = style_plotly_chart(fig_pareto)
+
+            # Configuración de los ejes y legenda
+            fig_pareto.update_layout(
+                xaxis=dict(title="Nivel de Severidad"),
+                yaxis=dict(
+                    title="Cantidad de Casos",
+                    showgrid=True,
+                    gridcolor="rgba(255,255,255,0.1)"
+                ),
+                yaxis2=dict(
+                    title="% Acumulado",
+                    overlaying="y",
+                    side="right",
+                    range=[0, 105],
+                    showgrid=False,
+                    ticksuffix="%"
+                ),
+                legend=dict(
+                    orientation="h",
+                    yanchor="bottom",
+                    y=1.02,
+                    xanchor="right",
+                    x=1
+                ),
+                margin=dict(t=30, b=20, l=10, r=10)
+            )
+
+            st.plotly_chart(fig_pareto, use_container_width=True)
             st.markdown(
-                "_Muestra el volumen total de incidentes clasificados por su nivel"
-                " de riesgo, permitiendo identificar rápidamente la criticidad"
-                " general de los ataques evaluados._",
+                "_Análisis de Pareto que clasifica los niveles de severidad en orden descendente junto con la curva de frecuencia acumulada, permitiendo identificar rápidamente los niveles de riesgo que concentran la mayor proporción de incidentes._",
                 unsafe_allow_html=True,
             )
         else:
