@@ -2,6 +2,10 @@
 ### *Prompt Injection*
 
 ---
+* **Carrera:** Tecnicatura en Ciencia de Datos e IA.
+* **Catedra:** Analisis y Exploracion de Datos
+* **Profesor:** Bonavita Alejandro.
+* **Integrantes:** Alejandra Bernasconi, Danilo Figueroa , Gerez Silvana
 
 ## 📌 DESCRIPCIÓN DEL PROYECTO
 
